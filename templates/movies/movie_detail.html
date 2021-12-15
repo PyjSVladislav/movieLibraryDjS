@@ -1,0 +1,32 @@
+{% extends '../base.html' %}
+
+{% block title %}
+    <title>{{movie.title}} - Movie Detail</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{ movie.poster.url }}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <p class="card-text">{{movie.description}}</p>
+            <p class="card-text"><small class="text-muted">{{movie.year}}</small></p>
+            <p class="card-text"><small class="text-muted">{{movie.country}}</small></p>
+            {% for director in movie.directors.all %}
+                <p class="card-text"><small class="text-muted">{{director}}</small></p>
+            {% endfor %}
+            {% for actor in movie.actors.all %}
+                <p class="card-text"><small class="text-muted">{{actor}}</small></p>
+            {% endfor %}
+            {% for genre in movie.genres.all %}
+                <p class="card-text"><small class="text-muted">{{genre}}</small></p>
+            {% endfor %}
+            </div>
+        </div>
+        </div>
+    </div>
+{% endblock content %}
